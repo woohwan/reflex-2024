@@ -28,19 +28,23 @@ def chat() -> rx.Component:
 
 
 def action_bar() -> rx.Component:
-    return rx.hstack(
-        rx.input(
-            placeholder="Ask a question",
-            value=TutorialState.question,
-            on_change=TutorialState.set_question,
-            on_key_down=TutorialState.for_anwser,
-            style=style.input_style,
-        ),
-        rx.button(
-            "Ask",
-            on_click=TutorialState.answer,
-            style=style.button_style,
-        ),
+    return rx.chakra.form(
+                rx.chakra.form_control(
+                    rx.hstack(
+                        rx.input(
+                            placeholder="Ask a question",
+                            value=TutorialState.question,
+                            on_change=TutorialState.set_question,
+                            on_key_down=TutorialState.for_anwser,
+                            style=style.input_style,
+                        ),
+                        rx.button(
+                            "Ask",
+                            on_click=TutorialState.answer,
+                            style=style.button_style,
+                        ),
+                    )
+                )
     )
 
 
